@@ -9,7 +9,7 @@ TIP: If you want to do something more complex, e.g. offer your players a domain 
 
 This repository currently holds scripts for:
 
-//- <<How to create and install the certificate under Windows,Windows>>
+- <<How to create and install the certificate under Windows,Windows>>
 - <<How to create and install the certificate under Linux,Linux>>
 //- <<How to create and install the certificate under macOS,macOS>>
 
@@ -26,13 +26,30 @@ You will have to download the correct script for your operating system.
 Right click on the link in the following list, which matches your operating system, and select "Save As". Then save it to your Foundry setup directory.
 
 [horizontal]
-//Windows:: link:https://github.com/carrierfry/simple-foundry-ssl/raw/refs/heads/main/windows.create-foundry-certificate.ps1[windows.create-foundry-certificate.ps1]
+Windows:: https://github.com/carrierfry/simple-foundry-ssl/raw/refs/heads/main/windows.create-foundry-certificate.ps1[windows.create-foundry-certificate.ps1]
 Linux:: https://github.com/carrierfry/simple-foundry-ssl/raw/refs/heads/main/linux.create-foundry-certificate.sh[linux.create-foundry-certificate.sh]
 //macOS:: link:https://github.com/carrierfry/simple-foundry-ssl/raw/refs/heads/main/macos.create-foundry-certificate.sh[macos.create-foundry-certificate.sh]
 
-TIP: You can save the script to any other directory, if you prefer. In that case, you'll have to enter the full path to your FoundryVTT installation at a later point.
+TIP: You can save the script to any other directory, if you prefer. In that case, you'll have to enter the full path to your FoundryVTT installation at a later point (only on linux and macOS).
 
-//=== How to create and install the certificate under Windows
+=== How to create and install the certificate under Windows
+Once you have downloaded the script, open your file explorer and navigate to the directory which contains the script.
+Then type `powershell` in the address bar and press kbd:[&crarr; Enter].
+A powershell window will open. in here type the following to allow the script to run:
+
+[source,powershell]
+----
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+----
+What does this do? It allows you to run powershell scripts without being prompted for permission. It will return back to normal after you close the powershell window.
+
+Now you can start the script with the following command:
+[source,powershell]
+----
+.\windows.create-foundry-certificate.ps1
+----
+
+When you have installed FoundryVTT in the default location you can just proceed and press kbd:[&crarr; Enter] when you are asked for the directory. If you installed FoundryVTT in a different location, you will have to enter the path to that location when asked for it.
 
 === How to create and install the certificate under Linux
 Once you have downloaded the script, open a command line terminal and navigate to the directory which contains the script.
