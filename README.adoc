@@ -1,0 +1,105 @@
+= Simple Foundry SSL setup
+:icons: font
+:experimental:
+
+This repository contains scripts for creating and installing self signed certificates for https://foundryvtt.com/[FoundryVTT].
+If you want to host FoundryVTT locally and haven an SSL certificate (allowing you to connect to FoundryVTT via HTTPS), one of these scripts will help you do so.
+
+NOTE: If you want to do something more complex, e.g. offer your players a domain name to connect to rather than an IP, you should check the guide at https://foundryvtt.com/article/ssl/[] instead.
+
+====
+This project is not in any way associated with https://foundryvtt.com/[FoundryVTT] or the developers behind https://foundryvtt.com/[FoundryVTT].
+
+If you use the scripts presented here, you do so at your own risk.
+====
+
+This repository currently holds scripts for:
+
+//- Windows
+- Linux
+//- macOS
+
+== How to use the scripts
+
+You will have to download the correct script for your operating system.
+Right click on the link in the following list, which matches your operating system, and select "Save As". Then save it to your Foundry setup directory.
+
+[horizontal]
+//Windows:: link:https://github.com/carrierfry/simple-foundry-ssl/raw/refs/heads/main/windows.create-foundry-certificate.ps1[windows.create-foundry-certificate.ps1]
+Linux:: https://github.com/carrierfry/simple-foundry-ssl/raw/refs/heads/main/linux.create-foundry-certificate.sh[linux.create-foundry-certificate.sh]
+//macOS:: link:https://github.com/carrierfry/simple-foundry-ssl/raw/refs/heads/main/macos.create-foundry-certificate.sh[macos.create-foundry-certificate.sh]
+
+TIP: You can save the script to any other directory, if you prefer. In that case, you'll have to enter the full path to your FoundryVTT installation at a later point.
+
+//=== How to create and install the certificate on Windows
+
+=== How to create and install the certificate on Linux
+Once you have downloaded the script, open a command line terminal and navigate to the directory which contains the script.
+
+.To get to the correct directory, use the `cd` command, as demonstrated here.
+[source,sh]
+----
+cd /home/user/foundryvtt/
+ls
+# You should now see an entry for linux.create-foundry-certificate.sh
+----
+
+When in the correct directory, ensure that the script can be executed by using the following command:
+
+[source,sh]
+----
+chmod u+x linux.create-foundry-certificate.sh
+----
+
+Now you can start the script with the following command:
+
+[source,sh]
+----
+./linux.create-foundry-certificate.sh
+----
+
+The script will request a (relative) directory in which to create the certificates.
+(If you just press the kbd:[&crarr; Enter] key without typing a directory name, the local directory `certificate` will be used.)
+This directory does not have to exist beforehand, but if it does any files named `localhost.pem` and `localhost.key` in it will be overwritten.
+
+When you confirm the directory by pressing the kbd:[&crarr; Enter] key, the certificate files will be generated in the selected directory.
+
+When the certificate has been generated, you will be prompted on whether you want the script to install the certificate in FoundryVTT for you.
+By typing `y` or `Y` followed by kbd:[&crarr; Enter], you choose to do so.
+Typing anything else and then kbd:[&crarr; Enter] will end the script with instructions on how to install the certificates manually.
+
+If you do choose to have the script install the certificates, you have to then enter the path to the FoundryVTT installation.
+This path will contain (at least) three directories:
+
+- Config
+- Data
+- Logs
+
+If you started the script in the FoundryVTT installation directory, enter `.` and press kbd:[&crarr; Enter].
+Otherwise, enter the relative or absolute path to the FoundryVTT installation and then press kbd:[y+&crarr; Enter], e.g.:
+[source,sh]
+----
+/home/user/foundryvtt/
+----
+If the given directory is _not_ a valid FoundryVTT installation directory, you will be told so and can then enter it again.
+If you don't want to have the script set up the certificates after all, you can cancel the script with kbd:[Ctrl + C].
+
+NOTE: A valid FoundryVTT installation directory is determined by the presence of the directory `Config` and the file `Config/options.json`.
+
+The script will copy the certificate files into the `Config` directory and enter them in the `Config/options.json`.
+
+If FoundryVTT is already running, you will have to stop and restart it for the certificates to be available.
+
+//=== How to create and install the certificate on macOS
+
+== What happens when the certificates are installed?
+
+Once the certificates have been installed, you can open FoundryVTT via the normal URL, but replacing `http://` with `https://`.
+So for example, if you were previously accessing it in your browser using the URL `http://localhost:30000`, the new URL will be `https://localhost:30000` and if it was previously `http://127.0.0.1:30000` the new path will be `https://127.0.0.1:30000`.
+
+[TIP]
+====
+When opening this URL for the first time, your browser will warn you that the website is not secure.
+This is because the certificate is self signed rather than signed by a trusted Certificate authority (CA).
+Since you hopefully trust yourself, you can ask your browser to accept this certificate nevertheless.
+====
