@@ -46,6 +46,9 @@ $CertBase64
 $Pem | Out-File -FilePath $CertificatePath\$CerficateBaseName.pem -Encoding Ascii
 $Key | Out-File -FilePath $CertificatePath\$CerficateBaseName.key -Encoding Ascii
 
+# Remove certificate from cert store
+Remove-Item "Cert:\CurrentUser\My\$thumbprint"
+
 Write-Host -ForegroundColor Green "[SUCCESS] The generated certificate files can be found in $CertificatePath and are called $CerficateBaseName.pem and $CerficateBaseName.key."
 
 Write-Host -ForegroundColor DarkYellow "Do you want to automatically configure the newly created certificate for Foundry? [y/N]"
@@ -94,6 +97,3 @@ else {
     Write-Host -ForegroundColor DarkYellow "[INFO] If you want to do this manually, move the files $CertificatePath/$CerficateBaseName.pem and $CertificatePath/$CerficateBaseName.key into your Foundry's Config directory."
     Write-Host -ForegroundColor DarkYellow "[INFO] Then in Foundry, go to the `"Application Configuration`" menu and under `"SSL Configuration`" set `"$CerficateBaseName.pem`" as the Certificate and `"$CerficateBaseName.key`" as the Key (without the quotation marks)."
 }
-
-# Remove certificate from cert store
-Remove-Item "Cert:\CurrentUser\My\$thumbprint"
