@@ -76,7 +76,9 @@ if ($ConfigureFoundry -eq "y" -or $ConfigureFoundry -eq "Y") {
             Copy-Item $CertificatePath\$CerficateBaseName.key $FoundryPath\Config
 
             # modify certificate settings
+            (Get-Content $OptionsJson) -replace '"sslCert": null', '"sslCert": "localhost.pem"' | Set-Content $OptionsJson
             (Get-Content $OptionsJson) -replace '"sslCert": ""', '"sslCert": "localhost.pem"' | Set-Content $OptionsJson
+            (Get-Content $OptionsJson) -replace '"sslKey": null', '"sslKey": "localhost.key"' | Set-Content $OptionsJson
             (Get-Content $OptionsJson) -replace '"sslKey": ""', '"sslKey": "localhost.key"' | Set-Content $OptionsJson
 
             Write-Host -ForegroundColor Green "[SUCCESS] The certificate has been installed. You may have to restart Foundry for the changes to take effect."
