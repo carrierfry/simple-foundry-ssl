@@ -5,19 +5,20 @@
 This repository contains scripts for creating and installing self signed certificates for https://foundryvtt.com/[FoundryVTT].
 If you want to host FoundryVTT locally and haven an SSL certificate (allowing you to connect to FoundryVTT via HTTPS), one of these scripts will help you do so.
 
-NOTE: If you want to do something more complex, e.g. offer your players a domain name to connect to rather than an IP, you should check the guide at https://foundryvtt.com/article/ssl/[] instead.
+TIP: If you want to do something more complex, e.g. offer your players a domain name to connect to rather than an IP, you should check the guide at https://foundryvtt.com/article/ssl/[] instead.
 
+This repository currently holds scripts for:
+
+//- <<setup-windows,Windows>>
+- <<setup-linux,Linux>>
+//- <<setup-macos,macOS>>
+
+[NOTE]
 ====
 This project is not in any way associated with https://foundryvtt.com/[FoundryVTT] or the developers behind https://foundryvtt.com/[FoundryVTT].
 
 If you use the scripts presented here, you do so at your own risk.
 ====
-
-This repository currently holds scripts for:
-
-//- Windows
-- Linux
-//- macOS
 
 == How to use the scripts
 
@@ -31,9 +32,11 @@ Linux:: https://github.com/carrierfry/simple-foundry-ssl/raw/refs/heads/main/lin
 
 TIP: You can save the script to any other directory, if you prefer. In that case, you'll have to enter the full path to your FoundryVTT installation at a later point.
 
-//=== How to create and install the certificate on Windows
+//[setup-windows]
+//=== How to create and install the certificate under Windows
 
-=== How to create and install the certificate on Linux
+[setup-linux]
+=== How to create and install the certificate under Linux
 Once you have downloaded the script, open a command line terminal and navigate to the directory which contains the script.
 
 .To get to the correct directory, use the `cd` command, as demonstrated here.
@@ -90,6 +93,7 @@ The script will copy the certificate files into the `Config` directory and enter
 
 If FoundryVTT is already running, you will have to stop and restart it for the certificates to be available.
 
+//[setup-macos]
 //=== How to create and install the certificate on macOS
 
 == What happens when the certificates are installed?
