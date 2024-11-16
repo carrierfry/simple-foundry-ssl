@@ -10,10 +10,9 @@ DEFAULT_COLOUR='\033[0m'
 
 if [ -z "$(which openssl)" ]; then
     echo "${RED}[ERROR] Cannot proceed because openssl is not installed.${DEFAULT_COLOUR}"
-    echo "${RED}        Please install the openssl package using your distribution's package manager.${DEFAULT_COLOUR}"
-    echo "${RED}        For Ubuntu/Debian this would be${DEFAULT_COLOUR} sudo apt install openssl"
-    echo "${RED}        For Centos/Fedora this would be${DEFAULT_COLOUR} sudo yum install openssl"
-    echo "${RED}        For other distributions, please check your distribution's documentation.${DEFAULT_COLOUR}"
+    echo "${RED}        Please install the openssl package.${DEFAULT_COLOUR}"
+    echo "${RED}        If you use homebrew, you can run${DEFAULT_COLOUR} brew install openssl@3"
+    echo "${RED}        If you use MacPorts, you can run${DEFAULT_COLOUR} port install openssl"
     exit 1
 fi
 
