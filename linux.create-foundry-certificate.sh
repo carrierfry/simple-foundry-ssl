@@ -80,6 +80,8 @@ if [ "$CONFIGURE_FOUNDRY" = "y" ] || [ "$CONFIGURE_FOUNDRY" = "Y" ]; then
     sed -i 's/"sslKey":\s*".*"/"sslKey": "'${KEY_FILE_NAME}'"/1' "$FOUNDRY_PATH/Config/options.json"
 
     echo "${GREEN}[SUCCESS] The certificate has been installed. You may have to restart Foundry for the changes to take effect.${DEFAULT_COLOUR}"
+
+    echo "${GREEN}[SUCCESS] You can delete the directory $CERTIFICATE_PATH if you don't need the certificates for anything else. The required files have been copied to Foundry's configuration directory.${DEFAULT_COLOUR}"
 else
     echo "${ORANGE}[INFO] Not configuring the certificate for Foundry.${DEFAULT_COLOUR}"
     echo "${ORANGE}[INFO] If you want to do this manually, move the files ${DEFAULT_COLOUR}$CERTIFICATE_PATH/$PEM_FILE_NAME${ORANGE} and ${DEFAULT_COLOUR}$CERTIFICATE_PATH/$KEY_FILE_NAME${ORANGE} into your Foundry's ${DEFAULT_COLOUR}Config${ORANGE} directory.${DEFAULT_COLOUR}"
