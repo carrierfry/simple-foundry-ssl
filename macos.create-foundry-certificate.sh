@@ -80,10 +80,11 @@ if [ "$CONFIGURE_FOUNDRY" = "y" ] || [ "$CONFIGURE_FOUNDRY" = "Y" ]; then
     chmod a+r "$FOUNDRY_PATH/Config/$KEY_FILE_NAME"
 
     # Set the certificate files in the configuration file
-    sed -i 's/"sslCert": null/"sslCert": ""/1' "$FOUNDRY_PATH/Config/options.json"
-    sed -i 's/"sslCert":\s*".*"/"sslCert": "'${PEM_FILE_NAME}'"/1' "$FOUNDRY_PATH/Config/options.json"
-    sed -i 's/"sslKey": null/"sslKey": ""/1' "$FOUNDRY_PATH/Config/options.json"
-    sed -i 's/"sslKey":\s*".*"/"sslKey": "'${KEY_FILE_NAME}'"/1' "$FOUNDRY_PATH/Config/options.json"
+    sed -i '.bak' 's/"sslCert": null/"sslCert": ""/1' "$FOUNDRY_PATH/Config/options.json"
+    sed -i '.bak' 's/"sslCert": ".*"/"sslCert": "'${PEM_FILE_NAME}'"/1' "$FOUNDRY_PATH/Config/options.json"
+    sed -i '.bak' 's/"sslKey": null/"sslKey": ""/1' "$FOUNDRY_PATH/Config/options.json"
+    sed -i '.bak' 's/"sslKey": ".*"/"sslKey": "'${KEY_FILE_NAME}'"/1' "$FOUNDRY_PATH/Config/options.json"
+    rm "$FOUNDRY_PATH/Config/options.json.bak"
 
     echo "${GREEN}[SUCCESS] The certificate has been installed. You may have to restart Foundry for the changes to take effect.${DEFAULT_COLOUR}"
 
