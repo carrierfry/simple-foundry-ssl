@@ -11,7 +11,7 @@ if ((Get-Item .).FullName.StartsWith("C:\Program Files") -or (Get-Item .).FullNa
     exit 1
 }
 
-Write-Host -ForegroundColor DarkYellow "In which directory do you want to create the certificate? Enter a path or just press Enter to create it under ${CertificatePath}."
+Write-Host -ForegroundColor DarkYellow "In which directory do you want to create the certificate? Enter a path or just press Enter to create it under ${CertificatePath}. (This directory can be deleted afterwards if you don't need the certificates for anything else.)"
 $CertificatePathCustom = Read-Host
 
 if ($CertificatePathCustom -ne "") {
@@ -61,7 +61,7 @@ Write-Host -ForegroundColor DarkYellow "Do you want to automatically configure t
 $ConfigureFoundry = Read-Host
 
 if ($ConfigureFoundry -eq "y" -or $ConfigureFoundry -eq "Y") {
-    Write-Host -ForegroundColor DarkYellow "Which directory is Foundry installed at? In this path, there will be directories named `"Config`", `"Data`", and `"Logs`". (Default Path: is `"$FoundryPath`". Press enter to leave at default)"
+    Write-Host -ForegroundColor DarkYellow "Which directory is Foundry installed at? In this path, there will be directories named `"Config`", `"Data`", and `"Logs`". (Default Path: is `"$FoundryPath`". Press enter to leave at default. Change this if you have manually installed Foundry somewhere else!)"
     $FoundryPathCustom = Read-Host
 
     if ($FoundryPathCustom -ne "") {
