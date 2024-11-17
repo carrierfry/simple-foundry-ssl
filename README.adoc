@@ -23,7 +23,7 @@ If you use the scripts presented here, you do so at your own risk.
 == How to use the scripts
 
 You will have to download the correct script for your operating system.
-Right click on the link in the following list, which matches your operating system, and select "Save As". Then save it to your Foundry setup directory.
+Right click on the link in the following list, which matches your operating system, and select "Save As". When you are on Windows, just save it to your Downloads folder (DO NOT save it in your FoundryVTT installation directory). If you are on Linux or macOS, save it to your Foundry setup directory.
 
 [horizontal]
 Windows:: https://github.com/carrierfry/simple-foundry-ssl/raw/refs/heads/main/windows.create-foundry-certificate.ps1[windows.create-foundry-certificate.ps1]
@@ -35,7 +35,7 @@ TIP: You can save the script to any other directory, if you prefer. In that case
 === How to create and install the certificate under Windows
 Once you have downloaded the script, open your file explorer and navigate to the directory which contains the script.
 Then type `powershell` in the address bar and press kbd:[&crarr; Enter].
-A powershell window will open. in here type the following to allow the script to run:
+A powershell window will open. in here type the following to allow the script to run (paste it by pressing the right mouse button and then hit kbd:[&crarr; Enter]):
 
 [source,powershell]
 ----
