@@ -6,7 +6,8 @@ $CerficateBaseName = "localhost"
 $CertificatePath = ".\certificate"
 
 if ((Get-Item .).FullName.StartsWith("C:\Program Files") -or (Get-Item .).FullName.StartsWith("C:\Program Files (x86)")) {
-    Write-Host -ForegroundColor Red "[ERROR] This script cannot be run from the Foundry installation directory. Place it in your Download or Documents directory instead. Quitting."
+    Write-Host -ForegroundColor Red "[ERROR] This script cannot be run from the Foundry installation directory. Place it in your Download or Documents directory instead. Press enter to quit."
+    Read-Host
     exit 1
 }
 
@@ -90,12 +91,14 @@ if ($ConfigureFoundry -eq "y" -or $ConfigureFoundry -eq "Y") {
             Write-Host -ForegroundColor Green "[SUCCESS] You can delete the directory $CertificatePath if you don't need the certificates for anything else. The required files have been copied to Foundry's configuration directory."
         }
         else {
-            Write-Host -ForegroundColor Red "[ERROR] The Foundry configuration file `"$OptionsJson`" was not found. Quitting."
+            Write-Host -ForegroundColor Red "[ERROR] The Foundry configuration file `"$OptionsJson`" was not found. Press enter to quit."
+            Read-Host
             exit 1
         }
     }
     else {
-        Write-Host -ForegroundColor Red "[ERROR] `"$FoundryPath`" is not a valid Foundry installation path. Quitting."
+        Write-Host -ForegroundColor Red "[ERROR] `"$FoundryPath`" is not a valid Foundry installation path. Press enter to quit."
+        Read-Host
         exit 1
     }
 }
