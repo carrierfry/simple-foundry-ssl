@@ -5,6 +5,11 @@ $CerficateBaseName = "localhost"
 # Where should certificate be stored?
 $CertificatePath = ".\certificate"
 
+if ((Get-Item .).FullName.StartsWith("C:\Program Files") -or (Get-Item .).FullName.StartsWith("C:\Program Files (x86)")) {
+    Write-Host -ForegroundColor Red "[ERROR] This script cannot be run from the Foundry installation directory. Place it in your Download or Documents directory instead. Quitting."
+    exit 1
+}
+
 Write-Host -ForegroundColor DarkYellow "In which directory do you want to create the certificate? Enter a path or just press Enter to create it under ${CertificatePath}."
 $CertificatePathCustom = Read-Host
 
